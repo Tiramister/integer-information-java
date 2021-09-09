@@ -11,7 +11,7 @@ import net.tiramister.integer.form.ResultForm;
 
 @Controller
 public class MainController {
-  @GetMapping("/")
+  @GetMapping()
   public String index(
       @ModelAttribute @Validated IntegerForm integerForm, BindingResult result, Model model) {
     Long n = null;

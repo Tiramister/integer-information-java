@@ -23,7 +23,7 @@
         以下の整数に対応</div>
     </div>
 
-    <form action="/" method="GET" th:object="${integerForm}">
+    <form th:action="@{/}" method="GET" th:object="${integerForm}">
       <div class="form-group row">
         <div class="col-sm-4">
           <input type="number" th:field="*{integer}"
