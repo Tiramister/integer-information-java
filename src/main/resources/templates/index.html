@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+  href="webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<title>Integer Information</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Integer Information</a>
+      </div>
+    </nav>
+  </header>
+  <div class="container p-3">
+    <form action="#" method="GET">
+      <div class="form-group row">
+        <div class="col-auto-sm">
+          <input type="text" name="integer" class="form-control">
+        </div>
+        <div class="col-auto-sm">
+          <button type="submit" class="btn btn-primary">調べる！</button>
+        </div>
+      </div>
+    </form>
+    <th:block th:if="${n != 0}">
+      <hr>
+      <p class="display-4">n = [[${n}]]</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">項目</th>
+            <th scope="col">結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">nは素数？</th>
+            <td>[[${result.isPrime ? "Yes" : "No"}]]</td>
+          </tr>
+        </tbody>
+      </table>
+    </th:block>
+  </div>
+</body>
+</html>
