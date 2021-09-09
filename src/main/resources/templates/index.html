@@ -36,9 +36,9 @@
           <div class="col-md-2">
             <button type="submit" class="btn btn-primary">調べる</button>
           </div>
-          <div th:errors="*{integer}"
-            class="col-auto-sm m-3 alert alert-danger"></div>
         </div>
+        <div th:errors="*{integer}" class="my-3 alert alert-danger"
+          role="alert"></div>
       </form>
 
       <th:block th:if="${result != null}">
