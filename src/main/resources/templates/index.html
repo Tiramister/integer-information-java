@@ -16,26 +16,36 @@
       </div>
     </nav>
   </header>
+
   <div class="container p-3">
-    <form action="#" method="GET">
+    <div class="row">
+      <div class="m-3 alert alert-info">1 以上 1,000,000,000,000
+        以下の整数に対応</div>
+    </div>
+
+    <form action="/" method="GET" th:object="${integerForm}">
       <div class="form-group row">
-        <div class="col-auto-sm">
-          <input type="text" name="integer" class="form-control">
+        <div class="col-sm-4">
+          <input type="number" th:field="*{integer}"
+            class="form-control">
         </div>
-        <div class="col-auto-sm">
-          <button type="submit" class="btn btn-primary">調べる！</button>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">調べる</button>
         </div>
+        <div th:errors="*{integer}"
+          class="col-auto-sm m-3 alert alert-danger"></div>
       </div>
     </form>
-    <th:block th:if="${n != 0}">
+
+    <th:block th:if="${result != null}">
       <hr>
-      <p class="display-4">n = [[${n}]]</p>
+      <p class="display-4">n = [[${result.n}]]</p>
 
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">項目</th>
-            <th scope="col">結果</th>
+            <th scope="col" style="width: 25%">項目</th>
+            <th scope="col" style="width: 75%">結果</th>
           </tr>
         </thead>
         <tbody>
