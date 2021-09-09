@@ -2,60 +2,65 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <link rel="stylesheet"
   href="webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
 <script src="webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
 <title>Integer Information</title>
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Integer Information</a>
-      </div>
-    </nav>
-  </header>
+  <div class="root">
+    <header class="sticky-top">
+      <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" th:href="@{/}">Integer Information</a>
+        </div>
+      </nav>
+    </header>
 
-  <div class="container p-3">
-    <div class="row">
-      <div class="m-3 alert alert-info">1 以上 1,000,000,000,000
-        以下の整数に対応</div>
+    <div class="container my-5">
+      <div class="alert alert-info" role="alert">1 以上
+        1,000,000,000,000 以下の整数に対応</div>
+
+      <form th:action="@{/}" method="GET" th:object="${integerForm}">
+        <div class="form-group row">
+          <div class="col-md-4">
+            <input type="number" th:field="*{integer}"
+              class="form-control">
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">調べる</button>
+          </div>
+          <div th:errors="*{integer}"
+            class="col-auto-sm m-3 alert alert-danger"></div>
+        </div>
+      </form>
+
+      <th:block th:if="${result != null}">
+        <hr>
+        <p class="display-4">n = [[${result.n}]]</p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 25%">項目</th>
+              <th scope="col" style="width: 75%">結果</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">nは素数？</th>
+              <td>[[${result.isPrime ? "Yes" : "No"}]]</td>
+            </tr>
+          </tbody>
+        </table>
+      </th:block>
     </div>
-
-    <form th:action="@{/}" method="GET" th:object="${integerForm}">
-      <div class="form-group row">
-        <div class="col-sm-4">
-          <input type="number" th:field="*{integer}"
-            class="form-control">
-        </div>
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary">調べる</button>
-        </div>
-        <div th:errors="*{integer}"
-          class="col-auto-sm m-3 alert alert-danger"></div>
-      </div>
-    </form>
-
-    <th:block th:if="${result != null}">
-      <hr>
-      <p class="display-4">n = [[${result.n}]]</p>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 25%">項目</th>
-            <th scope="col" style="width: 75%">結果</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">nは素数？</th>
-            <td>[[${result.isPrime ? "Yes" : "No"}]]</td>
-          </tr>
-        </tbody>
-      </table>
-    </th:block>
   </div>
 </body>
 </html>
