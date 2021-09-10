@@ -7,8 +7,21 @@
 
 <link rel="stylesheet"
   href="webjars/bootstrap/5.1.0/css/bootstrap.min.css" />
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
+  integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET"
+  crossorigin="anonymous">
+
 <script src="webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" th:href="@{/css/style.css}" />
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
+  integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"
+  integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+  crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
 <title>Integer Information</title>
 </head>
@@ -23,8 +36,8 @@
   </header>
 
   <div class="container my-5">
-    <div class="alert alert-info" role="alert">1 以上
-      1,000,000,000,000 以下の整数に対応</div>
+    <div class="alert alert-info" role="alert">\(1\) 以上
+      \(10^{12}\) 以下の整数に対応</div>
 
     <form th:action="@{/}" method="GET" th:object="${integerForm}">
       <div class="form-group row">
@@ -42,7 +55,7 @@
 
     <th:block th:if="${result != null}">
       <hr>
-      <p class="display-4">n = [[${result.n}]]</p>
+      <p class="display-4">\( n = [[${result.n}]] \)</p>
 
       <table class="table">
         <thead>
@@ -58,7 +71,7 @@
           </tr>
           <tr>
             <th scope="row">素因数分解</th>
-            <td>[[${result.factors}]]</td>
+            <td>\( [[${result.factors}]] \)</td>
           </tr>
         </tbody>
       </table>

@@ -29,12 +29,13 @@ public class ResultForm {
 
       sb.append(factor.getPrime());
       if (factor.getExp() > 1) {
-        sb.append('^');
+        sb.append("^{");
         sb.append(factor.getExp());
+        sb.append("}");
       }
 
       if (i + 1 < result.getFactors().size()) {
-        sb.append('*');
+        sb.append(" \\cdot ");
       }
     }
     resultForm.setFactors(sb.toString());
