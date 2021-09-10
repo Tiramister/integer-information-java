@@ -14,12 +14,13 @@ public class MainController {
   @GetMapping()
   public String index(
       @ModelAttribute @Validated IntegerForm integerForm, BindingResult result, Model model) {
-    Long n = null;
-    if (!result.hasErrors()) {
+    long n = 0;
+    if (!result.hasErrors() && integerForm.getInteger() != null) {
       n = integerForm.getInteger();
     }
 
     ResultForm resultForm = ResultForm.build(n);
+
     model.addAttribute("result", resultForm);
     return "index";
   }

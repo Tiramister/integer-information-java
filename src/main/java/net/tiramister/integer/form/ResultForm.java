@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.tiramister.integer.entity.Result;
+import net.tiramister.integer.logic.DivisorCounter;
 
 @Getter
 @Setter
@@ -13,9 +14,11 @@ public class ResultForm {
   private String isPrime;
   private String factors;
   private int divisorNum;
+  private long highlyComposite;
+  private int maximumDivisorNum;
 
-  public static ResultForm build(Long n) {
-    if (n == null) return null;
+  public static ResultForm build(long n) {
+    if (n == 0) return null;
 
     Result result = new Result(n);
 
@@ -24,6 +27,8 @@ public class ResultForm {
     resultForm.setIsPrime(result.isPrime() ? "Yes" : "No");
     resultForm.setFactors(result.getFactors().toString());
     resultForm.setDivisorNum(result.getDivisorNum());
+    resultForm.setHighlyComposite(result.getHighlyComposite());
+    resultForm.setMaximumDivisorNum(DivisorCounter.countDivisors(result.getHighlyComposite()));
 
     return resultForm;
   }
