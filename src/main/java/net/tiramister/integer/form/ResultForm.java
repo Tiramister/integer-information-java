@@ -3,7 +3,6 @@ package net.tiramister.integer.form;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.tiramister.integer.entity.Factor;
 import net.tiramister.integer.entity.Result;
 
 @Getter
@@ -25,15 +24,7 @@ public class ResultForm {
 
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < result.getFactors().size(); ++i) {
-      Factor factor = result.getFactors().get(i);
-
-      sb.append(factor.getPrime());
-      if (factor.getExp() > 1) {
-        sb.append("^{");
-        sb.append(factor.getExp());
-        sb.append("}");
-      }
-
+      sb.append(result.getFactors().get(i));
       if (i + 1 < result.getFactors().size()) {
         sb.append(" \\cdot ");
       }
