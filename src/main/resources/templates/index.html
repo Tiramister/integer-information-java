@@ -23,6 +23,19 @@
   integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
   crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async
+  src="https://www.googletagmanager.com/gtag/js?id=G-RFNWL2QEFY"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'G-RFNWL2QEFY');
+</script>
+
 <title>Integer Information</title>
 </head>
 
@@ -78,8 +91,8 @@
             <td>\( [[${result.divisorNum}]] \) 個</td>
           </tr>
           <tr>
-            <th scope="row">約数の個数の最大値 \( \displaystyle \max_{1 \leq m \leq n}
-              d(m) \)</th>
+            <th scope="row">約数の個数の最大値 \( \displaystyle \max_{1 \leq
+              m \leq n} d(m) \)</th>
             <td>\( [[${result.maximumDivisorNum}]] \) 個 (\( m =
               [[${result.highlyComposite}]] \))</td>
           </tr>
