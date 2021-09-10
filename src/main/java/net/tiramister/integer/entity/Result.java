@@ -1,9 +1,9 @@
 package net.tiramister.integer.entity;
 
-import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.tiramister.integer.logic.DivisorCounter;
 import net.tiramister.integer.logic.Factorizer;
 import net.tiramister.integer.logic.PrimeJudger;
 
@@ -12,11 +12,13 @@ import net.tiramister.integer.logic.PrimeJudger;
 @NoArgsConstructor
 public class Result {
   private boolean isPrime;
-  private ArrayList<Factor> factors;
+  private Factors factors;
+  private int divisorNum;
 
   public Result(long n) {
     this();
     this.setPrime(PrimeJudger.isPrime(n));
     this.setFactors(Factorizer.factorize(n));
+    this.setDivisorNum(DivisorCounter.countDivisors(n));
   }
 }

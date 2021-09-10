@@ -1,16 +1,14 @@
 package net.tiramister.integer.logic;
 
-import java.util.ArrayList;
-import net.tiramister.integer.entity.Factor;
+import net.tiramister.integer.entity.Factors;
 
 public class Factorizer {
   // O(n^{1/2})
-  // TODO: Pollard's rho algorithm による O(n^{1/4}) の実装
-  public static ArrayList<Factor> factorize(Long n) {
-    ArrayList<Factor> factors = new ArrayList<Factor>();
+  public static Factors factorize(Long n) {
+    Factors factors = new Factors();
 
     if (n == 1) {
-      factors.add(new Factor(1L, 1));
+      factors.add(1L, 1);
       return factors;
     }
 
@@ -21,12 +19,10 @@ public class Factorizer {
         n /= p;
         ++exp;
       }
-      factors.add(new Factor(p, exp));
+      factors.add(p, exp);
     }
 
-    if (n != 1) {
-      factors.add(new Factor(n, 1));
-    }
+    if (n != 1) factors.add(n, 1);
 
     return factors;
   }
