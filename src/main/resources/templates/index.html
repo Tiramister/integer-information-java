@@ -14,53 +14,55 @@
 </head>
 
 <body>
-  <div class="root">
-    <header class="sticky-top">
-      <nav class="navbar navbar-dark bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand" th:href="@{/}">Integer Information</a>
+  <header class="sticky-top">
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Integer Information</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container my-5">
+    <div class="alert alert-info" role="alert">1 以上
+      1,000,000,000,000 以下の整数に対応</div>
+
+    <form th:action="@{/}" method="GET" th:object="${integerForm}">
+      <div class="form-group row">
+        <div class="col-md-4">
+          <input type="number" th:field="*{integer}"
+            class="form-control">
         </div>
-      </nav>
-    </header>
-
-    <div class="container my-5">
-      <div class="alert alert-info" role="alert">1 以上
-        1,000,000,000,000 以下の整数に対応</div>
-
-      <form th:action="@{/}" method="GET" th:object="${integerForm}">
-        <div class="form-group row">
-          <div class="col-md-4">
-            <input type="number" th:field="*{integer}"
-              class="form-control">
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-primary">調べる</button>
-          </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary">調べる</button>
         </div>
-        <div th:errors="*{integer}" class="my-3 alert alert-danger"
-          role="alert"></div>
-      </form>
+      </div>
+      <div th:errors="*{integer}" class="my-3 alert alert-danger"
+        role="alert"></div>
+    </form>
 
-      <th:block th:if="${result != null}">
-        <hr>
-        <p class="display-4">n = [[${result.n}]]</p>
+    <th:block th:if="${result != null}">
+      <hr>
+      <p class="display-4">n = [[${result.n}]]</p>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" style="width: 25%">項目</th>
-              <th scope="col" style="width: 75%">結果</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">nは素数？</th>
-              <td>[[${result.isPrime ? "Yes" : "No"}]]</td>
-            </tr>
-          </tbody>
-        </table>
-      </th:block>
-    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 25%">項目</th>
+            <th scope="col" style="width: 75%">結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">素数？</th>
+            <td>[[${result.isPrime}]]</td>
+          </tr>
+          <tr>
+            <th scope="row">素因数分解</th>
+            <td>[[${result.factors}]]</td>
+          </tr>
+        </tbody>
+      </table>
+    </th:block>
   </div>
 </body>
 </html>

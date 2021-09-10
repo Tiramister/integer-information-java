@@ -1,23 +1,44 @@
 package net.tiramister.integer.form;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.tiramister.integer.logic.PrimeJudge;
+import net.tiramister.integer.entity.Factor;
+import net.tiramister.integer.entity.Result;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class ResultForm {
-  private Long n;
-  private Boolean isPrime;
+  private long n;
+  private String isPrime;
+  private String factors;
 
   public static ResultForm build(Long n) {
     if (n == null) return null;
 
-    ResultForm result = new ResultForm();
+    ResultForm resultForm = new ResultForm();
+    resultForm.setN(n);
 
-    result.setN(n);
-    result.setIsPrime(PrimeJudge.isPrime(n));
+    Result result = new Result(n);
+    resultForm.setIsPrime(result.isPrime() ? "Yes" : "No");
 
-    return result;
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < result.getFactors().size(); ++i) {
+      Factor factor = result.getFactors().get(i);
+
+      sb.append(factor.getPrime());
+      if (factor.getExp() > 1) {
+        sb.append('^');
+        sb.append(factor.getExp());
+      }
+
+      if (i + 1 < result.getFactors().size()) {
+        sb.append('*');
+      }
+    }
+    resultForm.setFactors(sb.toString());
+
+    return resultForm;
   }
 }
