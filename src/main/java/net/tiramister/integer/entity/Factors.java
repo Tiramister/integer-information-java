@@ -18,6 +18,16 @@ public class Factors {
     this.factors.add(new Factor(prime, exp));
   }
 
+  public static Factors one() {
+    Factors factors = new Factors();
+    factors.add(1, 1);
+    return factors;
+  }
+
+  public boolean isOne() {
+    return this.getFactors().get(0).getPrime() == 1;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

@@ -7,6 +7,7 @@ import net.tiramister.integer.logic.DivisorCounter;
 import net.tiramister.integer.logic.Factorizer;
 import net.tiramister.integer.logic.HighlyComposite;
 import net.tiramister.integer.logic.PrimeJudger;
+import net.tiramister.integer.logic.Totient;
 
 @Getter
 @Setter
@@ -16,12 +17,16 @@ public class Result {
   private Factors factors;
   private int divisorNum;
   private long highlyComposite;
+  private long totient;
 
   public Result(long n) {
     this();
+
+    Factors factors = Factorizer.factorize(n);
     this.setPrime(PrimeJudger.isPrime(n));
-    this.setFactors(Factorizer.factorize(n));
-    this.setDivisorNum(DivisorCounter.countDivisors(n));
+    this.setFactors(factors);
+    this.setDivisorNum(DivisorCounter.countDivisors(factors));
     this.setHighlyComposite(HighlyComposite.maximum(n));
+    this.setTotient(Totient.totient(factors));
   }
 }

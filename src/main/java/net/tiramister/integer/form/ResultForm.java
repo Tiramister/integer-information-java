@@ -18,6 +18,7 @@ public class ResultForm {
   private int divisorNum;
   private long highlyComposite;
   private int maximumDivisorNum;
+  private long totient;
 
   public static ResultForm build(long n) {
     ResultForm resultForm = new ResultForm();
@@ -30,6 +31,7 @@ public class ResultForm {
       resultForm.setDivisorNum(result.getDivisorNum());
       resultForm.setHighlyComposite(result.getHighlyComposite());
       resultForm.setMaximumDivisorNum(DivisorCounter.countDivisors(result.getHighlyComposite()));
+      resultForm.setTotient(result.getTotient());
     }
 
     return resultForm;
