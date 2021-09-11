@@ -20,8 +20,8 @@ public class MainController {
     }
 
     ResultForm resultForm = ResultForm.build(n);
-
     model.addAttribute("result", resultForm);
+
     return "index";
   }
 }
