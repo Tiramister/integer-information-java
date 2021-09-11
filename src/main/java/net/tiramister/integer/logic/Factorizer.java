@@ -4,15 +4,11 @@ import net.tiramister.integer.entity.Factors;
 
 public class Factorizer {
   // O(n^{1/2})
-  public static Factors factorize(Long n) {
+  public static Factors factorize(long n) {
+    if (n == 1) return Factors.one();
+
     Factors factors = new Factors();
-
-    if (n == 1) {
-      factors.add(1L, 1);
-      return factors;
-    }
-
-    for (Long p = 2L; p * p <= n; ++p) {
+    for (long p = 2L; p * p <= n; ++p) {
       if (n % p != 0) continue;
       int exp = 0;
       while (n % p == 0) {

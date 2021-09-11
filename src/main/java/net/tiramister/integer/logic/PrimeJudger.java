@@ -1,11 +1,10 @@
 package net.tiramister.integer.logic;
 
 public class PrimeJudger {
-  // Θ(sqrt(n))の判定アルゴリズム
-  // TODO: Miller-Rabinで実装
-  public static Boolean isPrime(Long n) {
-    if (n == 1L) return false;
-    for (Long p = 2L; p * p <= n; ++p) {
+  // O(sqrt(n))
+  public static boolean isPrime(long n) {
+    if (n == 1) return false;
+    for (long p = 2; p * p <= n; ++p) {
       if (n % p == 0) return false;
     }
     return true;
