@@ -15,7 +15,7 @@ public class Factors {
   }
 
   public void add(long prime, int exp) {
-    this.factors.add(new Factor(prime, exp));
+    this.getFactors().add(new Factor(prime, exp));
   }
 
   public static Factors one() {
