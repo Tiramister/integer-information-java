@@ -34,10 +34,14 @@ public class PrimitiveRoot {
    * <p>ある仮定のもとで、最小原始根は O(log^6(n)) になることが証明されている.
    *
    * @see https://en.wikipedia.org/wiki/Primitive_root_modulo_n#Upper_bounds
-   * @param n
-   * @return nの最小原始根 nが素数でないなら-1
+   * @param n 正の整数
+   * @return nの最小原始根 nが原始根を持たなければ-1
    */
   public static long minimum(long n) {
+    // 乗法群の位数が1のものは例外処理
+    if (n == 1) return 0;
+    if (n == 2) return 1;
+
     if (!hasPrimitiveRoot(n)) return -1;
 
     long t = Totient.totient(n);
@@ -45,7 +49,9 @@ public class PrimitiveRoot {
     long[] exps = factors.getFactors().stream().mapToLong(f -> t / f.getPrime()).toArray();
     // 試すべき指数
 
-    for (long p = 1; ; ++p) {
+    for (long p = 2; ; ++p) {
+      if (MathUtil.gcd(n, p) != 1) continue;
+
       boolean judge = true;
       for (long e : exps) {
         if (MathUtil.modPow(p, e, n) == 1) judge = false;
