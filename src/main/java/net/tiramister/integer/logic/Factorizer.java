@@ -5,11 +5,16 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.LongUnaryOperator;
 import net.tiramister.integer.entity.Factors;
 
+/** 素因数分解をするメソッド群. */
 public class Factorizer {
   private static ThreadLocalRandom rng = ThreadLocalRandom.current();
 
-  // naive algorithm
-  // O(n^{1/2})
+  /**
+   * 試し割りによるナイーブなアルゴリズム. O(n^{1/2}).
+   *
+   * @param n
+   * @return nの素因数分解
+   */
   public static Factors naive(long n) {
     if (n == 1) return Factors.one();
 
@@ -28,6 +33,14 @@ public class Factorizer {
     return factors;
   }
 
+  /**
+   * Pollard's rho 法でnの非自明な約数を見つける.
+   *
+   * <p>ヒューリスティックな乱択アルゴリズムなので、停止しない可能性がある.
+   *
+   * @param n 合成数
+   * @return nの非自明な約数
+   */
   private static long findDivisor(long n) {
     if (n % 2 == 0) return 2;
 
@@ -53,8 +66,12 @@ public class Factorizer {
     }
   }
 
-  // Pollard's rho algorithm
-  // O(n^{1/4}) expected?
+  /**
+   * Pollard's rho 法による素因数分解. O(n^{1/4}) と予想されているが未証明.
+   *
+   * @param n
+   * @return nの素因数分解
+   */
   public static Factors pollard(long n) {
     ArrayList<Long> ps = new ArrayList<>();
     ps.add(n);
@@ -89,6 +106,12 @@ public class Factorizer {
     return factors;
   }
 
+  /**
+   * nの素因数分解を行う.
+   *
+   * @param n
+   * @return nの素因数分解.
+   */
   public static Factors factorize(long n) {
     return pollard(n);
   }

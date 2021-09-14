@@ -3,7 +3,9 @@ package net.tiramister.integer.logic;
 import lombok.Getter;
 import lombok.Setter;
 
+/** 最大の高度合成数を計算するメソッド群. */
 public class HighlyComposite {
+  /** 再帰用のクラス. */
   @Getter
   @Setter
   private static class Recurse {
@@ -17,6 +19,12 @@ public class HighlyComposite {
       this.setBestProd(0);
     }
 
+    /**
+     * 高度合成数を更新.
+     *
+     * @param prod 整数
+     * @param dnum prodの約数の個数
+     */
     private void update(long prod, int dnum) {
       if (dnum > this.getMaxDnum()) {
         this.setMaxDnum(dnum);
@@ -27,7 +35,14 @@ public class HighlyComposite {
       }
     }
 
-    // 次の素因数, 現在の総積, 直前の指数, 現在の約数の個数
+    /**
+     * 再帰的に高度合成数の可能性を全探索する.
+     *
+     * @param p 次の素因数
+     * @param prod 現在の値
+     * @param prevE 直前の素因数の指数 最初は-1
+     * @param dnum 現在の約数の個数
+     */
     public void rec(long p, long prod, int prevE, int dnum) {
       update(prod, dnum);
 
@@ -41,6 +56,12 @@ public class HighlyComposite {
     }
   }
 
+  /**
+   * n以下の最大の高度合成数を計算する.
+   *
+   * @param n
+   * @return n以下の最大の高度合成数
+   */
   public static long maximum(long n) {
     Recurse recurse = new Recurse(n);
     recurse.rec(1, 1, -1, 1);

@@ -5,6 +5,7 @@ import javax.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
+/** 入力された整数を格納するフォーム. */
 @Getter
 @Setter
 public class IntegerForm {

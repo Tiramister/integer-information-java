@@ -9,6 +9,7 @@ import net.tiramister.integer.logic.HighlyComposite;
 import net.tiramister.integer.logic.PrimeJudger;
 import net.tiramister.integer.logic.Totient;
 
+/** 与えられた整数に関する情報をまとめるクラス. */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +20,11 @@ public class Result {
   private long highlyComposite;
   private long totient;
 
+  /**
+   * 整数nに関する情報で初期化する. *
+   *
+   * @param n 正の整数
+   */
   public Result(long n) {
     this();
 

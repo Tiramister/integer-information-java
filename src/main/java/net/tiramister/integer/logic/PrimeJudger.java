@@ -1,12 +1,20 @@
 package net.tiramister.integer.logic;
 
+/** 素数か否か判定するメソッド群. */
 public class PrimeJudger {
-  // 2^64まで判定するのに必要な基底
-  // https://miller-rabin.appspot.com/
+  /**
+   * 2^64まで判定するのに必要な基底.
+   *
+   * @see https://miller-rabin.appspot.com/
+   */
   private static final long[] bases = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 
-  // naive algorithm
-  // O(sqrt(n))
+  /**
+   * ナイーブな試し割りアルゴリズム. O^{1/2}.
+   *
+   * @param n
+   * @return nが素数か否か
+   */
   public static boolean naive(long n) {
     if (n == 1) return false;
     for (long p = 2; p * p <= n; ++p) {
@@ -15,8 +23,14 @@ public class PrimeJudger {
     return true;
   }
 
-  // Miller-Rabin algorithm
-  // O(log n)
+  /**
+   * Miller-Rabin 法. O(log n).
+   *
+   * <p>確率的なアルゴリズムだが、 n<2^64 の範囲では基底を上手く選ぶと決定的に解ける.
+   *
+   * @param n
+   * @return nが素数か否か
+   */
   public static boolean millerRabin(long n) {
     if (n == 1) return false;
     if (n == 2) return true;
@@ -53,6 +67,12 @@ public class PrimeJudger {
     return true;
   }
 
+  /**
+   * nが素数か否か判定する.
+   *
+   * @param n
+   * @return nが素数か否か
+   */
   public static boolean isPrime(long n) {
     return millerRabin(n);
   }

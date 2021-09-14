@@ -8,6 +8,7 @@ import net.tiramister.integer.entity.Result;
 import net.tiramister.integer.entity.YesNo;
 import net.tiramister.integer.logic.DivisorCounter;
 
+/** 整数の情報を表示用の形式で持つクラス. */
 @Getter
 @Setter
 @NoArgsConstructor
