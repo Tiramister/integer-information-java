@@ -7,6 +7,7 @@ import net.tiramister.integer.logic.DivisorCounter;
 import net.tiramister.integer.logic.Factorizer;
 import net.tiramister.integer.logic.HighlyComposite;
 import net.tiramister.integer.logic.PrimeJudger;
+import net.tiramister.integer.logic.PrimitiveRoot;
 import net.tiramister.integer.logic.Totient;
 
 /** 与えられた整数に関する情報をまとめるクラス. */
@@ -19,6 +20,7 @@ public class Result {
   private int divisorNum;
   private long highlyComposite;
   private long totient;
+  private long minimumPrimitiveRoot;
 
   /**
    * 整数nに関する情報で初期化する. *
@@ -34,5 +36,6 @@ public class Result {
     this.setDivisorNum(DivisorCounter.countDivisors(factors));
     this.setHighlyComposite(HighlyComposite.maximum(n));
     this.setTotient(Totient.totient(factors));
+    this.setMinimumPrimitiveRoot(PrimitiveRoot.minimum(n));
   }
 }
