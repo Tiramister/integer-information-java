@@ -1,6 +1,16 @@
-$(".sign-prohibited").keydown(function(e) {
-  console.log(e.which);
-  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-    e.preventDefault();
+/** 数字のみからなるか検証 */
+function isNumberOnly(val) {
+  let pattern = /^(\d*)$/;
+  return pattern.test(val);
+}
+
+/** 送信時にチェック */
+$("form").on("submit", function () {
+  let val = $("input.sign-prohibited");
+  if (isNumberOnly(val)) {
+    return true;
+  } else {
+    alert("数字のみを入力して下さい。");
+    return false;
   }
-})
+});
