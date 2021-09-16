@@ -46,7 +46,7 @@ public class HighlyComposite {
     public void rec(long p, long prod, int prevE, int dnum) {
       update(prod, dnum);
 
-      while (!PrimeJudger.isPrime(p)) ++p;
+      while (!PrimeUtil.isPrime(p)) ++p;
 
       // 指数列は広義単調減少
       for (int e = 1; (prevE == -1 || e <= prevE) && prod <= this.getN() / p; ++e) {

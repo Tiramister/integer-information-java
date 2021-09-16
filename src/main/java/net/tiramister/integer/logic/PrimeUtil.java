@@ -1,7 +1,7 @@
 package net.tiramister.integer.logic;
 
-/** 素数か否か判定するメソッド群. */
-public class PrimeJudger {
+/** 素数に関するメソッド群. */
+public class PrimeUtil {
   /**
    * 2^64まで判定するのに必要な基底.
    *
@@ -75,5 +75,16 @@ public class PrimeJudger {
    */
   public static boolean isPrime(long n) {
     return millerRabin(n);
+  }
+
+  /**
+   * 次の素数を返す.
+   *
+   * @param n 正の整数
+   * @return nより大きい最小の整数
+   */
+  public static long nextPrime(long n) {
+    while (!isPrime(++n)) {}
+    return n;
   }
 }

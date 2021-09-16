@@ -79,7 +79,7 @@ public class Factorizer {
     int i = 0;
     while (i < ps.size()) {
       long factor = ps.get(i);
-      if (factor == 1 || PrimeJudger.isPrime(factor)) {
+      if (factor == 1 || PrimeUtil.isPrime(factor)) {
         ++i;
       } else {
         long d = findDivisor(factor);

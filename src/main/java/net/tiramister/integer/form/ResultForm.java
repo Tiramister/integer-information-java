@@ -16,6 +16,7 @@ import net.tiramister.integer.logic.PrimitiveRoot;
 public class ResultForm {
   private long n;
   private YesNo isPrime;
+  private long nextPrime;
   private Factors factors;
   private int divisorNum;
   private long highlyComposite;
@@ -34,6 +35,7 @@ public class ResultForm {
 
       resultForm.setIsPrime(YesNo.valueOf(result.isPrime()));
       resultForm.setFactors(result.getFactors());
+      resultForm.setNextPrime(result.getNextPrime());
       resultForm.setDivisorNum(result.getDivisorNum());
       resultForm.setHighlyComposite(result.getHighlyComposite());
       resultForm.setMaximumDivisorNum(DivisorCounter.countDivisors(result.getHighlyComposite()));

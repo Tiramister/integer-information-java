@@ -6,7 +6,7 @@ import lombok.Setter;
 import net.tiramister.integer.logic.DivisorCounter;
 import net.tiramister.integer.logic.Factorizer;
 import net.tiramister.integer.logic.HighlyComposite;
-import net.tiramister.integer.logic.PrimeJudger;
+import net.tiramister.integer.logic.PrimeUtil;
 import net.tiramister.integer.logic.PrimitiveRoot;
 import net.tiramister.integer.logic.Totient;
 
@@ -16,6 +16,7 @@ import net.tiramister.integer.logic.Totient;
 @NoArgsConstructor
 public class Result {
   private boolean isPrime;
+  private long nextPrime;
   private Factors factors;
   private int divisorNum;
   private long highlyComposite;
@@ -31,7 +32,8 @@ public class Result {
     this();
 
     Factors factors = Factorizer.factorize(n);
-    this.setPrime(PrimeJudger.isPrime(n));
+    this.setPrime(PrimeUtil.isPrime(n));
+    this.setNextPrime(PrimeUtil.nextPrime(n));
     this.setFactors(factors);
     this.setDivisorNum(DivisorCounter.countDivisors(factors));
     this.setHighlyComposite(HighlyComposite.maximum(n));
