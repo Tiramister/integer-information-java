@@ -6,7 +6,7 @@ function isNumberOnly(val) {
 
 /** 送信時にチェック */
 $("form").on("submit", function () {
-  let val = $("input.sign-prohibited");
+  let val = $("input.sign-prohibited").val();
   if (isNumberOnly(val)) {
     return true;
   } else {
