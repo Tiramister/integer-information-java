@@ -32,13 +32,13 @@
 <script async
   src="https://www.googletagmanager.com/gtag/js?id=G-RFNWL2QEFY"></script>
 <script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
 
-	gtag('config', 'G-RFNWL2QEFY');
+  gtag('config', 'G-RFNWL2QEFY');
 </script>
 
 <title>Integer Information</title>
@@ -78,8 +78,10 @@
     <form th:action="@{/}" method="GET" th:object="${integerForm}">
       <div class="form-group row">
         <div class="col-md-4">
-          <input type="number" th:field="*{integer}" min="1"
-            max="1000000000000000000" class="form-control sign-prohibited">
+          <input type="text" inputmode="numeric"
+            pattern="[1-9][0-9]{0,17}|10{18}" th:field="*{integer}"
+            title="1以上1,000,000,000,000,000,000以下の整数を、先頭に0を付けずに入力して下さい"
+            class="form-control sign-prohibited">
         </div>
         <div class="col-md-2">
           <button type="submit" class="btn btn-primary">調べる</button>
