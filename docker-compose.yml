@@ -1,0 +1,8 @@
+version: '3'
+services:
+  integer:
+    build: .
+    image: integer-image
+    container_name: integer
+    ports:
+      - 8081:8080
