@@ -37,7 +37,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" th:href="@{/}">Integer Information</a>
+      <a class="navbar-brand" href=".">Integer Information</a>
 
       <button class="navbar-toggler" type="button"
         data-bs-toggle="collapse" data-bs-target="#navbarId"
@@ -65,7 +65,7 @@
     <div class="alert alert-info" role="alert">\(1\) 以上
       \(10^{18}\) 以下の整数に対応</div>
 
-    <form th:action="@{/}" method="GET" th:object="${integerForm}">
+    <form method="GET" th:object="${integerForm}">
       <div class="form-group row">
         <div class="col-md-4">
           <input type="text" inputmode="numeric"
